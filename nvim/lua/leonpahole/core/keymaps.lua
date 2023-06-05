@@ -60,6 +60,9 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string u
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 
+-- saga
+keymap.set("n", "<S-l>", "<cmd>Lspsaga show_line_diagnostics<cr>", { remap = true })
+
 -- harpoon
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
@@ -82,3 +85,27 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+
+-- when scrolling down, add some centering
+local api = vim.api
+api.nvim_set_keymap("n", "n", "nzz", { noremap = true, silent = true })
+api.nvim_set_keymap("n", "N", "Nzz", { noremap = true, silent = true })
+api.nvim_set_keymap("n", "G", "Gzz", { noremap = true, silent = true })
+api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
+api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+
+vim.keymap.set("i", "<F8>", function()
+  return vim.fn["codeium#CycleCompletions"](1)
+end, { expr = true, remap = true })
+
+vim.keymap.set("i", "<F9>", function()
+  return vim.fn["codeium#CycleCompletions"](-1)
+end, { expr = true, remap = true })
+
+vim.keymap.set("i", "<C-x>", function()
+  return vim.fn["codeium#Clear"]()
+end, { expr = true, remap = true })
+
+vim.keymap.set("i", "<F10>", function()
+  return vim.fn["codeium#Complete"](-1)
+end, { expr = true, remap = true })

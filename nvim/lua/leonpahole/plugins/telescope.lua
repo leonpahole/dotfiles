@@ -34,11 +34,9 @@ telescope.setup({
       },
     },
   },
-  extensions = {
-    frecency = {
-      default_workspace = "CWD",
-      show_filter_column = false,
-      show_unindexed = false,
+  pickers = {
+    buffers = {
+      sort_lastused = true,
     },
   },
 })

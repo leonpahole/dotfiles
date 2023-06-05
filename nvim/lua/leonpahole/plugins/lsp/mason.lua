@@ -27,6 +27,7 @@ mason_lspconfig.setup({
     "cssls",
     "tailwindcss",
     "svelte",
+    "angularls",
     "lua_ls",
     "emmet_ls",
   },

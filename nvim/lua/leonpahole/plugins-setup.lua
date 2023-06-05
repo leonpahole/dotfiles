@@ -108,15 +108,33 @@ return packer.startup(function(use)
   -- git integration
   use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 
+  use("ThePrimeagen/harpoon")
+
+  use("andreshazard/vim-freemarker")
+
+  use("petertriho/nvim-scrollbar")
+
   use({
-    "nvim-telescope/telescope-frecency.nvim",
+    "kevinhwang91/nvim-hlslens",
     config = function()
-      require("telescope").load_extension("frecency")
+      -- require('hlslens').setup() is not required
+      require("scrollbar.handlers.search").setup({
+        -- hlslens config overrides
+      })
+    end,
+  })
+
+  use("Exafunction/codeium.vim")
+
+  use({
+    "prochri/telescope-all-recent.nvim",
+    config = function()
+      require("telescope-all-recent").setup({
+        -- your config goes here
+      })
     end,
     requires = { "kkharji/sqlite.lua" },
   })
-
-  use("ThePrimeagen/harpoon")
 
   if packer_bootstrap then
     require("packer").sync()
