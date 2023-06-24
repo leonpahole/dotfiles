@@ -15,5 +15,3 @@ set -gx PATH "~/.dotnet" $PATH
 set -gx PATH "~/.cargo/bin" $PATH
 
 # fish_vi_key_bindings
-
-
