@@ -1,8 +1,31 @@
 #!/usr/bin/env bash
 
+declare -A links=(
+  ["nvim"]="~/.config/nvim"
+  ["scripts"]="~/scripts"
+  [".alacritty.yml"]="~/.alacritty.yml"
+  ["fish"]="~/.config/fish"
+  [".tmux.conf"]="~/.tmux.conf"
+  # add more symlinks here, ["name"]="path/to/link"
+)
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-ln -s $SCRIPT_DIR/nvim/ ~/.config/nvim
-ln -s $SCRIPT_DIR/.tmux.conf ~/.tmux.conf
-ln -s $SCRIPT_DIR/.alacritty.yml ~/.alacritty.yml
-ln -s $SCRIPT_DIR/fish ~/.config/fish
+for source in "${!links[@]}"; do
+  target="${links[$source]}"
+
+  # Expand the tilde (~) in the paths
+  source_name=$(eval echo "$source")
+  source="$SCRIPT_DIR/$source_name"
+
+  target=$(eval echo "$target")
+
+  # Check if the link already exists
+  if [ -e "$target" ]; then
+    echo "File or directory already exists at $target, not linking"
+  else
+    # Create the symbolic link
+    ln -s "$source" "$target"
+    echo "Symbolic link created from $source to $target"
+  fi
+done
