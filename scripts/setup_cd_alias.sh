@@ -1,10 +1,14 @@
 #!/bin/bash
 
-echo "Enter the name for the cd alias:"
-read alias_name
+# Check if the alias name is provided as a command-line argument
+if [ -z "$1" ]; then
+    echo "Alias name is missing."
+    echo "Usage: $0 <alias_name>"
+    exit 1
+fi
 
 # Trim leading and trailing whitespace from the alias name
-alias_name=$(echo "$alias_name" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+alias_name=$(echo "$1" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
 # Check if the alias name is empty
 if [ -z "$alias_name" ]; then
@@ -15,7 +19,7 @@ fi
 # Get the current directory
 current_directory=$(pwd)
 
-fish_command="alias -s $alias_name 'cd $current_directory'"
+fish_command="alias -s ws$alias_name 'cd $current_directory'"
 
 # Run the Fish shell and execute the command
 fish -c "$fish_command"
