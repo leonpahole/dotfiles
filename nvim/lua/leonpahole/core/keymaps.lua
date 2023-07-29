@@ -94,18 +94,7 @@ api.nvim_set_keymap("n", "G", "Gzz", { noremap = true, silent = true })
 api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
 api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
 
-vim.keymap.set("i", "<F8>", function()
-  return vim.fn["codeium#CycleCompletions"](1)
-end, { expr = true, remap = true })
-
-vim.keymap.set("i", "<F9>", function()
-  return vim.fn["codeium#CycleCompletions"](-1)
-end, { expr = true, remap = true })
-
-vim.keymap.set("i", "<C-x>", function()
-  return vim.fn["codeium#Clear"]()
-end, { expr = true, remap = true })
-
-vim.keymap.set("i", "<F10>", function()
-  return vim.fn["codeium#Complete"](-1)
-end, { expr = true, remap = true })
+vim.keymap.set("i", "<F8>", "copilot#Next()", { expr = true, remap = true })
+vim.keymap.set("i", "<F9>", "copilot#Previous()", { expr = true, remap = true })
+vim.keymap.set("i", "<C-x>", "copilot#Dismiss()", { expr = true, remap = true })
+vim.keymap.set("i", "<F10>", "copilot#Suggest()", { expr = true, remap = true })

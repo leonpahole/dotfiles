@@ -124,8 +124,6 @@ return packer.startup(function(use)
     end,
   })
 
-  use("Exafunction/codeium.vim")
-
   use({
     "prochri/telescope-all-recent.nvim",
     config = function()
@@ -135,6 +133,8 @@ return packer.startup(function(use)
     end,
     requires = { "kkharji/sqlite.lua" },
   })
+
+  use("github/copilot.vim")
 
   if packer_bootstrap then
     require("packer").sync()
