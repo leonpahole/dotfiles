@@ -15,3 +15,10 @@ set -gx PATH "~/.dotnet" $PATH
 set -gx PATH "~/.cargo/bin" $PATH
 
 # fish_vi_key_bindings
+
+export PATH="$PATH:/home/leonpahole/.bin"
+
+export FLYCTL_INSTALL="/home/leonpahole/.fly"
+
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
