@@ -16,4 +16,10 @@ saga.setup({
   --     normal_bg = "#022746",
   --   },
   -- },
+  finder = {
+    keys = {
+      vsplit = "v",
+      shuttle = "<C-p>",
+    },
+  },
 })
