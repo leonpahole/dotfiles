@@ -136,6 +136,8 @@ return packer.startup(function(use)
 
   use("github/copilot.vim")
 
+  use({ "ofseed/lualine-copilot" })
+
   if packer_bootstrap then
     require("packer").sync()
   end

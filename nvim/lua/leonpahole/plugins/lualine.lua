@@ -33,4 +33,12 @@ lualine.setup({
   options = {
     theme = lualine_nightfly,
   },
+  sections = {
+    lualine_x = {
+      "copilot",
+      "filetype",
+      "fileformat",
+      "encoding",
+    },
+  },
 })
