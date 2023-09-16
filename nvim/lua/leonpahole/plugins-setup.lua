@@ -138,6 +138,8 @@ return packer.startup(function(use)
 
   use({ "ofseed/lualine-copilot" })
 
+  use({ "wuelnerdotexe/vim-astro" })
+
   if packer_bootstrap then
     require("packer").sync()
   end

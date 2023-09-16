@@ -93,6 +93,12 @@ lspconfig["svelte"].setup({
   on_attach = on_attach,
 })
 
+-- configure astro server
+lspconfig["astro"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
 -- configure angular server
 lspconfig["angularls"].setup({
   capabilities = capabilities,
