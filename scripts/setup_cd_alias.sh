@@ -19,7 +19,8 @@ fi
 # Get the current directory
 current_directory=$(pwd)
 
-fish_command="alias -s ws$alias_name 'cd $current_directory'"
+# cd to the current directory when the alias is invoked and split Mux vertically, then open nvim in the top pane
+fish_command="alias -s ws$alias_name 'cd $current_directory && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim'"
 
 # Run the Fish shell and execute the command
 fish -c "$fish_command"
