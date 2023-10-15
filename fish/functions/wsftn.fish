@@ -1,0 +1,3 @@
+function wsftn --wraps='xdotool windowsize (xdotool getactivewindow) 100% 100% && cd /home/leonpahole/PersonalProjects/masters/fit-tracker-server && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim' --description 'alias wsftn xdotool windowsize (xdotool getactivewindow) 100% 100% && cd /home/leonpahole/PersonalProjects/masters/fit-tracker-server && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim'
+  xdotool windowsize (xdotool getactivewindow) 100% 100% && cd /home/leonpahole/PersonalProjects/masters/fit-tracker-server && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim $argv; 
+end

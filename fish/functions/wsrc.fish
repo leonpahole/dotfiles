@@ -1,0 +1,3 @@
+function wsrc --wraps='xdotool windowsize (xdotool getactivewindow) 100% 100% && cd /home/leonpahole/Work/UCentrix/RunChicken/runchicken_rn && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim' --description 'alias wsrc xdotool windowsize (xdotool getactivewindow) 100% 100% && cd /home/leonpahole/Work/UCentrix/RunChicken/runchicken_rn && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim'
+  xdotool windowsize (xdotool getactivewindow) 100% 100% && cd /home/leonpahole/Work/UCentrix/RunChicken/runchicken_rn && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim $argv; 
+end
