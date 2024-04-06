@@ -2,6 +2,8 @@
 
 declare -A links=(
 	["nvim"]="~/.config/nvim"
+	["fontconfig"]="~/.config/fontconfig"
+	["fonts"]="~/.local/share/fonts"
 	["scripts"]="~/scripts"
 	[".alacritty.yml"]="~/.alacritty.yml"
 	[".alacritty_theme.yaml"]="~/.alacritty_theme.yaml"

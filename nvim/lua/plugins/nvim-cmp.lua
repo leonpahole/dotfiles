@@ -11,5 +11,17 @@ return {
       ["<C-e>"] = cmp.mapping.abort(), -- close completion window
       ["<CR>"] = cmp.mapping.confirm({ select = false }),
     })
+    opts.window = {
+      completion = {
+        border = "rounded",
+        side_padding = 0,
+      },
+      documentation = {
+        border = "rounded",
+        -- make it transparent
+        winhighlight = "Normal:Pmenu,PmenuSbar:experc,PmenuThumb:experd,FloatBorder:Pmenu,Search:None",
+        side_padding = 0,
+      },
+    }
   end,
 }

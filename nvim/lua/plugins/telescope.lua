@@ -16,6 +16,7 @@ return {
           "node_modules",
           ".git",
         },
+        path_display = { "truncate" },
       },
       pickers = {
         buffers = {

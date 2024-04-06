@@ -33,11 +33,18 @@ for _, mode in ipairs({ "n", "v" }) do
   -- keymap.set(mode, "<Space>acs", ":CopilotChatCommitStaged<CR>")
 end
 
-vim.cmd([[
-  function! OpenInNautilus()
-    let l:file = substitute(neotree#get_curr_file(), " ", "\\ ", "g")
-    silent execute "!nautilus --select " . l:file . " &"
-  endfunction
-]])
+-- Define the function to get the selected file in NeoTree
+function GetNeotreeSelectedFile()
+  local current_window = vim.api.nvim_get_current_win()
+  local neotree_buffer = vim.fn.winbufnr(current_window)
+  local cursor_line = vim.fn.line(".")
+  return vim.api.nvim_buf_get_lines(neotree_buffer, cursor_line - 1, cursor_line, false)[1]
+end
 
-vim.api.nvim_set_keymap("n", "<leader>on", ":call OpenInNautilus()<CR>", { noremap = true, silent = true })
+-- Bind the function to a keymap
+vim.api.nvim_set_keymap(
+  "n",
+  "<Leader>on",
+  ':lua print("Selected file: " .. GetNeotreeSelectedFile())<CR>',
+  { noremap = true, silent = true }
+)
