@@ -1,6 +1,6 @@
 if status is-interactive
-and not set -q TMUX
- exec tmux
+    and not set -q TMUX
+    exec tmux
 end
 
 # pnpm
@@ -21,18 +21,12 @@ export PATH="$PATH:/home/leonpahole/.bin"
 export FLYCTL_INSTALL="/home/leonpahole/.fly"
 
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+export PATH="/opt/nvim:$PATH"
+export PATH="/opt/neovide:$PATH"
 
-function __check_nvm --on-variable PWD --description 'Do nvm stuff'
-if test -f .nvmrc
-  set node_version (nvm version)
-  set nvmrc_node_version (nvm version (cat .nvmrc))
-
-  if [ $nvmrc_node_version = "N/A" ]
-    nvm install
-  else if [ $nvmrc_node_version != $node_version ]
-    nvm use
-  end
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/leonpahole/anaconda3/bin/conda
+    eval /home/leonpahole/anaconda3/bin/conda "shell.fish" hook $argv | source
 end
-end
-
-__check_nvm
+# <<< conda initialize <<<
