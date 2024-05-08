@@ -48,3 +48,9 @@ vim.api.nvim_set_keymap(
   ':lua print("Selected file: " .. GetNeotreeSelectedFile())<CR>',
   { noremap = true, silent = true }
 )
+
+-- open lazygit in new Tmux window
+keymap.set("n", "<leader>gg", ":!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>", { silent = true })
+
+-- telescope word search selection
+keymap.set("n", "<leader>sw", '"zyiw:Telescope live_grep default_text=<C-r>z<cr>')
