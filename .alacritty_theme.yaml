@@ -25,6 +25,6 @@ colors:
 
   indexed_colors:
     - index: 16
-      color: "#ff966c"
+      color: "#222436"
     - index: 17
       color: "#c53b53"

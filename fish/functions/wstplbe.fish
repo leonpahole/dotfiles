@@ -1,3 +1,0 @@
-function wstplbe --wraps='xdotool windowsize (xdotool getactivewindow) 100% 100% && cd /home/leonpahole/Work/Povio/Architecture/gpbuild-be-nestjs-template && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim' --description 'alias wstplbe xdotool windowsize (xdotool getactivewindow) 100% 100% && cd /home/leonpahole/Work/Povio/Architecture/gpbuild-be-nestjs-template && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim'
-  xdotool windowsize (xdotool getactivewindow) 100% 100% && cd /home/leonpahole/Work/Povio/Architecture/gpbuild-be-nestjs-template && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim $argv; 
-end

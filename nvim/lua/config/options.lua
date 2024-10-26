@@ -6,3 +6,5 @@ vim.opt.completeopt = "menu,menuone,noselect"
 
 -- enable line wrap
 vim.opt.wrap = true
+
+vim.api.nvim_set_hl(0, "SatelliteBar", { bg = "#ffffff" })
