@@ -1,3 +1,5 @@
+vim.opt.termguicolors = true
+
 return {
   {
     "folke/tokyonight.nvim",
