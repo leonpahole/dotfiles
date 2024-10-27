@@ -1,0 +1,1 @@
+osascript ~/scripts/maximize.scpt

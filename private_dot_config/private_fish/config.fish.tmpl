@@ -1,0 +1,50 @@
+if status is-interactive
+    and not set -q TMUX
+    {{ if eq .chezmoi.os "darwin" }}
+    exec /opt/homebrew/bin/tmux
+    {{ else if eq .chezmoi.os "linux" }}
+    exec tmux
+    {{- end }}
+end
+
+{{ if eq .chezmoi.os "linux" }}
+# pnpm
+set -gx PNPM_HOME "~/.local/share/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
+{{- end }}
+
+# direnv
+{{ if eq .chezmoi.os "darwin" }}
+/opt/homebrew/bin/direnv hook fish | source
+{{ else if eq .chezmoi.os "linux" }}
+direnv hook fish | source
+{{- end }}
+
+{{ if eq .chezmoi.os "linux" }}
+set -gx PATH "~/.dotnet" $PATH
+set -gx PATH "~/.cargo/bin" $PATH
+{{- end }}
+
+# fish_vi_key_bindings
+
+{{ if eq .chezmoi.os "darwin" }}
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$PATH:/Users/lpahole/.toolbox/bin"
+{{ else if eq .chezmoi.os "linux" }}
+export PATH="$PATH:/home/leonpahole/.bin"
+export PATH="$PATH:/home/leonpahole/bin"
+
+export FLYCTL_INSTALL="/home/leonpahole/.fly"
+
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+export PATH="/opt/nvim:$PATH"
+export PATH="/opt/neovide:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/leonpahole/anaconda3/bin/conda
+    eval /home/leonpahole/anaconda3/bin/conda "shell.fish" hook $argv | source
+end
+# <<< conda initialize <<<
+{{- end }}

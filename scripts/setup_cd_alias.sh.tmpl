@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Check if the alias name is provided as a command-line argument
+if [ -z "$1" ]; then
+  echo "Alias name is missing."
+  echo "Usage: $0 <alias_name>"
+  exit 1
+fi
+
+# Trim leading and trailing whitespace from the alias name
+alias_name=$(echo "$1" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+# Check if the alias name is empty
+if [ -z "$alias_name" ]; then
+  echo "Alias name cannot be empty."
+  exit 1
+fi
+
+# Get the current directory
+current_directory=$(pwd)
+
+# maximize window, cd to the current directory when the alias is invoked and split Mux vertically, then open nvim in the top pane
+{{ if eq .chezmoi.os "darwin" }}
+fish_command="alias -s ws$alias_name 'osascript ~/scripts/maximize.scpt && cd $current_directory && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim'"
+{{ else if eq .chezmoi.os "linux" }}
+fish_command="alias -s ws$alias_name 'xdotool windowsize (xdotool getactivewindow) 100% 100% && cd $current_directory && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim'"
+{{- end }}
+
+# Run the Fish shell and execute the command
+fish -c "$fish_command"

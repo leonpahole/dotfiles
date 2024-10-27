@@ -1,0 +1,61 @@
+import:
+  - ~/.alacritty_theme.yaml
+
+window:
+  padding:
+    x: 5
+    y: 5
+  class:
+    instance: Alacritty
+    general: Alacritty
+  opacity: 1
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+font:
+  normal:
+    {{ if eq .chezmoi.os "darwin" }}
+    family: CaskaydiaCove NF
+    {{ else if eq .chezmoi.os "linux" }}
+    family: CaskaydiaCove NerdFont
+    {{- end }}
+    style: Regular
+
+  bold:
+    {{ if eq .chezmoi.os "darwin" }}
+    family: CaskaydiaCove NF
+    {{ else if eq .chezmoi.os "linux" }}
+    family: CaskaydiaCove NerdFont
+    {{- end }}
+    style: Bold
+
+  italic:
+    {{ if eq .chezmoi.os "darwin" }}
+    family: CaskaydiaCove NF
+    {{ else if eq .chezmoi.os "linux" }}
+    family: CaskaydiaCove NerdFont
+    {{- end }}
+    style: Italic
+
+  bold_italic:
+    {{ if eq .chezmoi.os "darwin" }}
+    family: CaskaydiaCove NF
+    {{ else if eq .chezmoi.os "linux" }}
+    family: CaskaydiaCove NerdFont
+    {{- end }}
+    style: Bold Italic
+
+  size: 11
+  offset:
+    x: 0
+    y: 0
+
+cursor:
+  style:
+    shape: Underline
+    blinking: Off
+
+selection:
+  save_to_clipboard: false

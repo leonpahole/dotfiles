@@ -1,0 +1,12 @@
+{{ if eq .chezmoi.os "darwin" }}
+
+.config/fish/conf.d/android.fish
+.config/fish/conf.d/dotnet.fish
+
+{{ else if eq .chezmoi.os "linux" }}
+
+.config/fish/completions/mise.fish
+scripts/max.sh
+scripts/maximize.scpt
+
+{{- end }}
