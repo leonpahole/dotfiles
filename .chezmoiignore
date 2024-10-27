@@ -8,5 +8,6 @@
 .config/fish/completions/mise.fish
 scripts/max.sh
 scripts/maximize.scpt
+Library
 
 {{- end }}
