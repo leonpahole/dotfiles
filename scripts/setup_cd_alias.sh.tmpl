@@ -21,7 +21,7 @@ current_directory=$(pwd)
 
 # maximize window, cd to the current directory when the alias is invoked and split Mux vertically, then open nvim in the top pane
 {{ if eq .chezmoi.os "darwin" }}
-fish_command="alias -s ws$alias_name 'osascript ~/scripts/maximize.scpt && cd $current_directory && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim'"
+fish_command="alias -s ws$alias_name 'osascript ~/scripts/maximize.scpt && cd $current_directory && tmux split-window -v -l 20 && tmux select-pane -t 0 && nvim'"
 {{ else if eq .chezmoi.os "linux" }}
 fish_command="alias -s ws$alias_name 'xdotool windowsize (xdotool getactivewindow) 100% 100% && cd $current_directory && tmux split-window -v -p 20 && tmux select-pane -t 0 && nvim'"
 {{- end }}
