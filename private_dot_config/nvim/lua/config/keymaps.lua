@@ -18,21 +18,6 @@ keymap.set("n", "<Space>xr", ":LspRestart<CR>")
 
 keymap.set("n", "<Space>ce", ":lua vim.diagnostic.open_float()<CR>")
 
-keymap.set("n", "<Space>at", ":CopilotChatToggle<CR>")
-
-for _, mode in ipairs({ "n", "v" }) do
-  keymap.set(mode, "<Space>ae", ":CopilotChatExplain<CR>")
-  keymap.set(mode, "<Space>au", ":CopilotChatTests<CR>")
-  keymap.set(mode, "<Space>aff", ":CopilotChatFix<CR>")
-  keymap.set(mode, "<Space>afd", ":CopilotChatFixDiagnostic<CR>")
-  keymap.set(mode, "<Space>ao", ":CopilotChatOptimize<CR>")
-  keymap.set(mode, "<Space>ad", ":CopilotChatDocs<CR>")
-
-  -- These two don't work yet
-  -- keymap.set(mode, "<Space>acc", ":CopilotChatCommit<CR>")
-  -- keymap.set(mode, "<Space>acs", ":CopilotChatCommitStaged<CR>")
-end
-
 -- Define the function to get the selected file in NeoTree
 function GetNeotreeSelectedFile()
   local current_window = vim.api.nvim_get_current_win()
