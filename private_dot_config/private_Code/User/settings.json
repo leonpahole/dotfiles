@@ -1,0 +1,121 @@
+{
+  "workbench.colorTheme": "Catppuccin Macchiato",
+  "git.confirmSync": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.mouseWheelZoom": true,
+  "redhat.telemetry.enabled": false,
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "terminal.integrated.env.linux": {},
+  "vim.handleKeys": {
+    "<C-p>": false,
+    "<C-w>": false,
+    "<C-shift-e>": false
+  },
+  "editor.stickyScroll.enabled": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.wordWrap": "on",
+  "window.zoomLevel": 1,
+  "security.promptForLocalFileProtocolHandling": false,
+  "debug.javascript.autoAttachFilter": "always",
+  "vim.useSystemClipboard": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
+    },
+    {
+      "before": ["<space>"],
+      "commands": ["whichkey.show"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<space>"],
+      "commands": ["whichkey.show"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["p"],
+      "after": ["\"", "_", "d", "P"]
+    }
+  ],
+  "whichkey.bindings": [
+    {
+      "key": "b",
+      "name": "Tabs...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "o",
+          "name": "Close all others",
+          "type": "command",
+          "command": "workbench.action.closeOtherEditors"
+        }
+      ]
+    },
+    {
+      "key": "g",
+      "name": "Git...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "g",
+          "name": "Open SCM",
+          "type": "command",
+          "command": "workbench.view.scm"
+        }
+      ]
+    },
+    {
+      "key": "s",
+      "name": "Search...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "g",
+          "name": "Global",
+          "type": "command",
+          "command": "workbench.view.search"
+        }
+      ]
+    },
+    {
+      "key": "f",
+      "name": "File...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "e",
+          "name": "Focus explorer",
+          "type": "command",
+          "command": "workbench.view.explorer"
+        },
+        {
+          "key": "f",
+          "name": "Search",
+          "type": "command",
+          "command": "workbench.view.search"
+        }
+      ]
+    },
+    {
+      "key": "e",
+      "name": "Toggle Explorer",
+      "type": "command",
+      "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+      "key": "t",
+      "name": "Toggle terminal",
+      "type": "command",
+      "command": "workbench.action.togglePanel"
+    }
+  ],
+  "breadcrumbs.enabled": false,
+  "editor.suggest.preview": true,
+  "vim.mouseSelectionGoesIntoVisualMode": false
+}
