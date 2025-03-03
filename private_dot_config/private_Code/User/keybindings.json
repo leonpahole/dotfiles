@@ -32,18 +32,18 @@
     "command": "list.select",
     "when": "listFocus && !inputFocus && !treestickyScrollFocused"
   },
-  // use shift + L to switch editors
+  // use shift + L and shift + H to switch editors
   {
     "key": "shift+l",
     "command": "workbench.action.nextEditor",
-    "when": "vim.mode === 'Normal'"
+    "when": "vim.mode === 'Normal' && editorFocus"
   },
   {
     "key": "shift+h",
     "command": "workbench.action.previousEditor",
-    "when": "vim.mode === 'Normal'"
+    "when": "vim.mode === 'Normal' && editorFocus"
   },
-  // scroll up and down quick results with ctrl + arrows
+  // scroll up and down quick results
   {
     "key": "ctrl+j",
     "command": "workbench.action.quickOpenSelectNext",
@@ -65,15 +65,14 @@
     "command": "selectPrevSuggestion",
     "when": "suggestWidgetVisible"
   },
+  // resizing main panel
   {
     "key": "ctrl+b j",
-    "command": "workbench.action.terminal.resizePaneDown",
-    "when": "terminalFocus"
+    "command": "workbench.action.increaseViewHeight"
   },
   {
     "key": "ctrl+b k",
-    "command": "workbench.action.terminal.resizePaneUp",
-    "when": "terminalFocus"
+    "command": "workbench.action.decreaseViewHeight"
   },
   {
     "key": "ctrl+b h",
@@ -83,42 +82,212 @@
     "key": "ctrl+b l",
     "command": "workbench.action.decreaseViewWidth"
   },
+  // open terminal if not already when pressing the down key
   {
     "key": "ctrl+j",
-    "command": "search.focus.nextInputBox",
-    "when": "searchViewletFocus && inputBoxFocus"
+    "command": "workbench.action.terminal.focus",
+    "when": "editorFocus && view.terminal.visible == false && vim.mode == 'Normal'"
+  },
+  // maximise terminal
+  {
+    "key": "ctrl+b m",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus"
+  },
+  // maximise editor
+  // if both open
+  {
+    "key": "ctrl+b m",
+    "when": "editorFocus && vim.mode == 'Normal' && view.terminal.visible && sideBarVisible",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.togglePanel",
+        "workbench.action.closeSidebar",
+        "workbench.action.toggleMaximizeEditorGroup"
+      ]
+    }
+  },
+  // if terminal open
+  {
+    "key": "ctrl+b m",
+    "when": "editorFocus && vim.mode == 'Normal' && view.terminal.visible && !sideBarVisible",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.togglePanel",
+        "workbench.action.toggleMaximizeEditorGroup"
+      ]
+    }
+  },
+  // if sidebar open
+  {
+    "key": "ctrl+b m",
+    "when": "editorFocus && vim.mode == 'Normal' && !view.terminal.visible && sideBarVisible",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.closeSidebar",
+        "workbench.action.toggleMaximizeEditorGroup"
+      ]
+    }
+  },
+  // if none open
+  {
+    "key": "ctrl+b m",
+    "when": "editorFocus && vim.mode == 'Normal' && !view.terminal.visible && !sideBarVisible",
+    "command": "workbench.action.toggleMaximizeEditorGroup"
+  },
+  // open new terminal
+  {
+    "key": "ctrl+b t",
+    "when": "terminalFocus",
+    "command": "workbench.action.terminal.new"
+  },
+  // scroll terminals
+  {
+    "key": "alt+j",
+    "when": "terminalFocus",
+    "command": "workbench.action.terminal.focusNext"
   },
   {
+    "key": "alt+k",
+    "when": "terminalFocus",
+    "command": "workbench.action.terminal.focusPrevious"
+  },
+  // split editor
+  {
+    "key": "ctrl+b i",
+    "when": "editorFocus",
+    "command": "workbench.action.splitEditorRight"
+  },
+  // search - focus result
+  {
+    "key": "ctrl+j",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "search.action.focusNextSearchResult",
+        "extension.vim_escape"
+      ]
+    },
+    "when": "inSearchEditor && searchInputBoxFocus"
+  },
+  // search - focus input box
+  {
     "key": "ctrl+k",
-    "command": "search.focus.previousInputBox",
+    "command": "search.action.focusQueryEditorWidget",
+    "when": "inSearchEditor && !searchInputBoxFocus"
+  },
+  // search - focus next result after
+  {
+    "key": "n",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "search.action.focusNextSearchResult",
+        "extension.vim_escape"
+      ]
+    },
+    "when": "inSearchEditor && !searchInputBoxFocus"
+  },
+  // search - focus previous result after
+  {
+    "key": "shift+n",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "search.action.focusPreviousSearchResult",
+        "search.action.focusPreviousSearchResult",
+        "extension.vim_escape"
+      ]
+    },
+    "when": "inSearchEditor && !searchInputBoxFocus"
+  },
+  // search - widen the preview
+  {
+    "key": "alt+[Minus]",
+    "command": "decreaseSearchEditorContextLines",
+    "when": "inSearchEditor"
+  },
+  {
+    "key": "alt+[Equal]",
+    "command": "increaseSearchEditorContextLines",
+    "when": "inSearchEditor"
+  },
+  // remap ctrl + alt + p
+  {
+    "key": "shift+alt+p",
+    "command": "workbench.action.showCommands"
+  },
+  // search viewlet
+  {
+    "key": "ctrl+j",
+    "command": "search.action.focusNextSearchResult",
     "when": "searchViewletFocus"
   },
   {
+    "key": "ctrl+f",
+    "command": "actions.find",
+    "when": "editorFocus || editorIsOpen"
+  },
+  {
     "key": "ctrl+j",
-    "command": "workbench.scm.action.focusNextResourceGroup",
-    "when": "focusedView == workbench.scm"
+    "command": "editor.action.nextMatchFindAction",
+    "when": "editorFocus && findInputFocussed"
   },
   {
     "key": "ctrl+k",
-    "command": "workbench.scm.action.focusPreviousInput",
-    "when": "focusedView == workbench.scm"
+    "command": "editor.action.previousMatchFindAction",
+    "when": "editorFocus && findInputFocussed"
   },
   {
-    "key": "ctrl+b i",
-    "command": "workbench.action.terminal.split",
-    "when": "terminalFocus"
+    "key": "escape",
+    "command": "-search.action.cancel",
+    "when": "listFocus && searchViewletVisible && !inputFocus && !treestickyScrollFocused && searchState != '0'"
   },
-  // Move to the terminal on the left (Ctrl + H)
   {
-    "key": "ctrl+h",
-    "command": "workbench.action.terminal.focusPreviousPane",
-    "when": "terminalFocus"
+    "key": "escape",
+    "command": "runCommands",
+    "args": {
+      "commands": ["search.action.cancel", "extension.vim_escape"]
+    },
+    "when": "listFocus && searchViewletVisible && !inputFocus && !treestickyScrollFocused && searchState != '0'"
   },
-
-  // Move to the terminal on the right (Ctrl + L)
+  // file explorer
   {
-    "key": "ctrl+l",
-    "command": "workbench.action.terminal.focusNextPane",
-    "when": "terminalFocus"
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "d",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "runCommands",
+    "args": {
+      "commands": ["deleteFile", "workbench.action.focusFifthEditorGroup"]
+    }
+  },
+  {
+    "key": "r",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "renameFile"
+  },
+  // show error popup
+  {
+    "key": "shift+k",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus && (vim.mode === 'Normal' || vim.mode === 'Visual')"
+  },
+  // scroll quick fix
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "selectNextCodeAction",
+    "when": "codeActionMenuVisible"
   }
 ]

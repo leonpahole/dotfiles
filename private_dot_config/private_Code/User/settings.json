@@ -79,7 +79,7 @@
           "key": "g",
           "name": "Global",
           "type": "command",
-          "command": "workbench.view.search"
+          "command": "workbench.action.findInFiles"
         }
       ]
     },
@@ -96,9 +96,51 @@
         },
         {
           "key": "f",
-          "name": "Search",
+          "name": "Open",
           "type": "command",
-          "command": "workbench.view.search"
+          "command": "workbench.action.quickOpen"
+        },
+        {
+          "key": "a",
+          "name": "Add file",
+          "type": "command",
+          "command": "extension.advancedNewFile"
+        },
+        {
+          "key": "r",
+          "name": "Rename file",
+          "type": "command",
+          "command": "runCommands",
+          "args": {
+            "commands": [
+              "fileutils.renameFile",
+              "workbench.action.focusFirstEditorGroup"
+            ]
+          }
+        },
+        {
+          "key": "m",
+          "name": "Move file",
+          "type": "command",
+          "command": "runCommands",
+          "args": {
+            "commands": [
+              "fileutils.moveFile",
+              "workbench.action.focusFirstEditorGroup"
+            ]
+          }
+        },
+        {
+          "key": "d",
+          "name": "Delete file",
+          "type": "command",
+          "command": "runCommands",
+          "args": {
+            "commands": [
+              "fileutils.removeFile",
+              "workbench.action.focusFirstEditorGroup"
+            ]
+          }
         }
       ]
     },
@@ -109,6 +151,19 @@
       "command": "workbench.action.toggleSidebarVisibility"
     },
     {
+      "key": "c",
+      "name": "Code",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "a",
+          "name": "Action",
+          "type": "command",
+          "command": "editor.action.quickFix"
+        }
+      ]
+    },
+    {
       "key": "t",
       "name": "Toggle terminal",
       "type": "command",
@@ -117,5 +172,12 @@
   ],
   "breadcrumbs.enabled": false,
   "editor.suggest.preview": true,
-  "vim.mouseSelectionGoesIntoVisualMode": false
+  "vim.mouseSelectionGoesIntoVisualMode": false,
+  "geminicodeassist.project": "",
+  "search.mode": "newEditor",
+  "search.searchEditor.defaultNumberOfContextLines": 5,
+  "window.titleBarStyle": "custom",
+  "window.customMenuBarAltFocus": false,
+  "cloudcode.duetAI.project": "",
+  "diffEditor.codeLens": true
 }
