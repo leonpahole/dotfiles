@@ -160,6 +160,12 @@
           "name": "Action",
           "type": "command",
           "command": "editor.action.quickFix"
+        },
+        {
+          "key": "r",
+          "name": "Rename",
+          "type": "command",
+          "command": "editor.action.rename"
         }
       ]
     },
@@ -178,6 +184,5 @@
   "search.searchEditor.defaultNumberOfContextLines": 5,
   "window.titleBarStyle": "custom",
   "window.customMenuBarAltFocus": false,
-  "cloudcode.duetAI.project": "",
   "diffEditor.codeLens": true
 }

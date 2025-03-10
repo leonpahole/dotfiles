@@ -273,6 +273,31 @@
     "when": "filesExplorerFocus && !inputFocus",
     "command": "renameFile"
   },
+  {
+    "key": "y",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "filesExplorer.copy"
+  },
+  {
+    "key": "x",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "filesExplorer.cut"
+  },
+  {
+    "key": "p",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "filesExplorer.paste"
+  },
+  {
+    "key": "o",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "revealFileInOS"
+  },
+  {
+    "key": "shift+o",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "explorer.openWith"
+  },
   // show error popup
   {
     "key": "shift+k",
