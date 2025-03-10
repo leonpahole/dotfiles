@@ -8,3 +8,5 @@ vim.opt.completeopt = "menu,preview,menuone,noselect"
 vim.opt.wrap = true
 
 vim.api.nvim_set_hl(0, "SatelliteBar", { bg = "#ffffff" })
+
+vim.g.snacks_animate = false

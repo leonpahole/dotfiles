@@ -30,6 +30,7 @@ set -gx PATH "~/.cargo/bin" $PATH
 
 {{ if eq .chezmoi.os "darwin" }}
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/Users/lpahole/.rodar/bin:$PATH"
 export PATH="$PATH:/Users/lpahole/.toolbox/bin"
 {{ else if eq .chezmoi.os "linux" }}
 export PATH="$PATH:/home/leonpahole/.bin"
