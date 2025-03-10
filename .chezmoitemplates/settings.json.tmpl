@@ -50,6 +50,8 @@
   },
   "viceroy.config.setup.amazonQ": false,
   "viceroy.doc.welcome.showAtStartup": false,
+  {{ else }}
+  "geminicodeassist.project": "",
   {{- end }}
   "workbench.colorTheme": "Catppuccin Macchiato",
   "git.confirmSync": false,
@@ -226,12 +228,32 @@
       "name": "Toggle terminal",
       "type": "command",
       "command": "workbench.action.togglePanel"
+    },
+    {{ if eq .os "mac" }}
+    {
+      "key": "q",
+      "name": "Amazon Q",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "q",
+          "name": "Open Q",
+          "type": "command",
+          "command": "aws.amazonq.focusChat"
+        },
+        {
+          "key": "i",
+          "name": "Inline chat",
+          "type": "command",
+          "command": "aws.amazonq.inline.invokeChat"
+        }
+      ]
     }
+    {{- end }}
   ],
   "breadcrumbs.enabled": false,
   "editor.suggest.preview": true,
   "vim.mouseSelectionGoesIntoVisualMode": false,
-  "geminicodeassist.project": "",
   "search.mode": "newEditor",
   "search.searchEditor.defaultNumberOfContextLines": 5,
   "window.titleBarStyle": "custom",

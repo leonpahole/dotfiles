@@ -314,5 +314,59 @@
     "key": "{{ .mKey }}+j",
     "command": "selectNextCodeAction",
     "when": "codeActionMenuVisible"
-  }
+  },
+  {
+    "key": "{{ .mKey }}+p",
+    "command": "-workbench.action.quickOpen"
+  },
+  {{ if eq .os "mac" }}
+  // mac cmd+d remap
+  {
+    "key": "cmd+d",
+    "command": "-editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+d",
+    "command": "-notebook.addFindMatchToSelection",
+    "when": "config.notebook.multiCursor.enabled && notebookCellEditorFocused && activeEditor == 'workbench.editor.notebook'"
+  },
+  {
+    "key": "cmd+d",
+    "command": "-extension.vim_cmd+d",
+    "when": "editorTextFocus && vim.active && vim.use<D-d> && !inDebugRepl"
+  },
+  {
+    "key": "cmd+d",
+    "command": "extension.vim_ctrl+d",
+    "when": "editorTextFocus && vim.active && vim.use<D-d> && !inDebugRepl"
+  },
+  {
+    "key": "cmd+u",
+    "command": "-cursorUndo",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "cmd+u",
+    "command": "extension.vim_ctrl+u",
+    "when": "editorTextFocus && vim.active && vim.use<C-u> && !inDebugRepl"
+  },
+  // ctrl + space for suggestions
+  {
+    "key": "cmd+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+  },
+  // code completion on q
+  {
+    "key": "cmd+p",
+    "command": "aws.amazonq.invokeInlineCompletion",
+    "when": "aws.codewhisperer.connected && editorTextFocus"
+  },
+  {
+    "key": "alt+c",
+    "command": "-aws.amazonq.invokeInlineCompletion",
+    "when": "aws.codewhisperer.connected && editorTextFocus"
+  },
+  {{- end }}
 ]
