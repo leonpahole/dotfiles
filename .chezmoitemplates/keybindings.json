@@ -2,22 +2,22 @@
 [
   // tmux-like navigation
   {
-    "key": "ctrl+h",
+    "key": "{{ .mKey }}+h",
     "command": "workbench.action.navigateLeft",
     "when": "vim.mode === 'Normal' || vim.mode === 'Visual'"
   },
   {
-    "key": "ctrl+l",
+    "key": "{{ .mKey }}+l",
     "command": "workbench.action.navigateRight",
     "when": "vim.mode === 'Normal' || vim.mode === 'Visual'"
   },
   {
-    "key": "ctrl+k",
+    "key": "{{ .mKey }}+k",
     "command": "workbench.action.navigateUp",
     "when": "vim.mode === 'Normal' || vim.mode === 'Visual'"
   },
   {
-    "key": "ctrl+j",
+    "key": "{{ .mKey }}+j",
     "command": "workbench.action.navigateDown",
     "when": "vim.mode === 'Normal' || vim.mode === 'Visual'"
   },
@@ -45,59 +45,59 @@
   },
   // scroll up and down quick results
   {
-    "key": "ctrl+j",
+    "key": "{{ .mKey }}+j",
     "command": "workbench.action.quickOpenSelectNext",
     "when": "inQuickOpen"
   },
   {
-    "key": "ctrl+k",
+    "key": "{{ .mKey }}+k",
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
   },
-  // scroll up and down intellisense with ctrl + arrows
+  // scroll up and down intellisense with {{ .mKey }} + arrows
   {
-    "key": "ctrl+j",
+    "key": "{{ .mKey }}+j",
     "command": "selectNextSuggestion",
     "when": "suggestWidgetVisible"
   },
   {
-    "key": "ctrl+k",
+    "key": "{{ .mKey }}+k",
     "command": "selectPrevSuggestion",
     "when": "suggestWidgetVisible"
   },
   // resizing main panel
   {
-    "key": "ctrl+b j",
+    "key": "{{ .mKey }}+b j",
     "command": "workbench.action.increaseViewHeight"
   },
   {
-    "key": "ctrl+b k",
+    "key": "{{ .mKey }}+b k",
     "command": "workbench.action.decreaseViewHeight"
   },
   {
-    "key": "ctrl+b h",
+    "key": "{{ .mKey }}+b h",
     "command": "workbench.action.increaseViewWidth"
   },
   {
-    "key": "ctrl+b l",
+    "key": "{{ .mKey }}+b l",
     "command": "workbench.action.decreaseViewWidth"
   },
   // open terminal if not already when pressing the down key
   {
-    "key": "ctrl+j",
+    "key": "{{ .mKey }}+j",
     "command": "workbench.action.terminal.focus",
     "when": "editorFocus && view.terminal.visible == false && vim.mode == 'Normal'"
   },
   // maximise terminal
   {
-    "key": "ctrl+b m",
+    "key": "{{ .mKey }}+b m",
     "command": "workbench.action.toggleMaximizedPanel",
     "when": "terminalFocus"
   },
   // maximise editor
   // if both open
   {
-    "key": "ctrl+b m",
+    "key": "{{ .mKey }}+b m",
     "when": "editorFocus && vim.mode == 'Normal' && view.terminal.visible && sideBarVisible",
     "command": "runCommands",
     "args": {
@@ -110,7 +110,7 @@
   },
   // if terminal open
   {
-    "key": "ctrl+b m",
+    "key": "{{ .mKey }}+b m",
     "when": "editorFocus && vim.mode == 'Normal' && view.terminal.visible && !sideBarVisible",
     "command": "runCommands",
     "args": {
@@ -122,7 +122,7 @@
   },
   // if sidebar open
   {
-    "key": "ctrl+b m",
+    "key": "{{ .mKey }}+b m",
     "when": "editorFocus && vim.mode == 'Normal' && !view.terminal.visible && sideBarVisible",
     "command": "runCommands",
     "args": {
@@ -134,13 +134,13 @@
   },
   // if none open
   {
-    "key": "ctrl+b m",
+    "key": "{{ .mKey }}+b m",
     "when": "editorFocus && vim.mode == 'Normal' && !view.terminal.visible && !sideBarVisible",
     "command": "workbench.action.toggleMaximizeEditorGroup"
   },
   // open new terminal
   {
-    "key": "ctrl+b t",
+    "key": "{{ .mKey }}+b t",
     "when": "terminalFocus",
     "command": "workbench.action.terminal.new"
   },
@@ -157,13 +157,13 @@
   },
   // split editor
   {
-    "key": "ctrl+b i",
+    "key": "{{ .mKey }}+b i",
     "when": "editorFocus",
     "command": "workbench.action.splitEditorRight"
   },
   // search - focus result
   {
-    "key": "ctrl+j",
+    "key": "{{ .mKey }}+j",
     "command": "runCommands",
     "args": {
       "commands": [
@@ -175,7 +175,7 @@
   },
   // search - focus input box
   {
-    "key": "ctrl+k",
+    "key": "{{ .mKey }}+k",
     "command": "search.action.focusQueryEditorWidget",
     "when": "inSearchEditor && !searchInputBoxFocus"
   },
@@ -215,29 +215,29 @@
     "command": "increaseSearchEditorContextLines",
     "when": "inSearchEditor"
   },
-  // remap ctrl + alt + p
+  // remap {{ .mKey }} + alt + p
   {
     "key": "shift+alt+p",
     "command": "workbench.action.showCommands"
   },
   // search viewlet
   {
-    "key": "ctrl+j",
+    "key": "{{ .mKey }}+j",
     "command": "search.action.focusNextSearchResult",
     "when": "searchViewletFocus"
   },
   {
-    "key": "ctrl+f",
+    "key": "{{ .mKey }}+f",
     "command": "actions.find",
     "when": "editorFocus || editorIsOpen"
   },
   {
-    "key": "ctrl+j",
+    "key": "{{ .mKey }}+j",
     "command": "editor.action.nextMatchFindAction",
     "when": "editorFocus && findInputFocussed"
   },
   {
-    "key": "ctrl+k",
+    "key": "{{ .mKey }}+k",
     "command": "editor.action.previousMatchFindAction",
     "when": "editorFocus && findInputFocussed"
   },
@@ -306,12 +306,12 @@
   },
   // scroll quick fix
   {
-    "key": "ctrl+k",
+    "key": "{{ .mKey }}+k",
     "command": "selectPrevCodeAction",
     "when": "codeActionMenuVisible"
   },
   {
-    "key": "ctrl+j",
+    "key": "{{ .mKey }}+j",
     "command": "selectNextCodeAction",
     "when": "codeActionMenuVisible"
   }

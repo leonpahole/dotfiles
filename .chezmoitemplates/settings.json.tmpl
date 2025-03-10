@@ -1,4 +1,56 @@
 {
+  {{ if eq .os "mac" }}
+  "telemetry.telemetryLevel": "off",
+  "viceroy.config.lastVersion": "0.53.201860",
+  "files.watcherExclude": {
+    "**/build/**": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.hg/store/**": true
+  },
+  "files.exclude": {
+    ".viceroy": true,
+    "apollo-overrides": true,
+    "release-info": true,
+    "src/*/build": false,
+    "build": false,
+    "env": true,
+    "packageInfo*": true,
+    ".bemol": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true
+  },
+  "search.exclude": {
+    "env": true,
+    "src/*/build": true,
+    "build": true,
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true
+  },
+  "[brazilPackageConfig]": {
+    "workbench.editor.languageDetection": false
+  },
+  "viceroy.config.internal.lastUpdateTime": "2025-03-07T09:44:47.068Z",
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.commandPalette.experimental.enableNaturalLanguageSearch": false,
+  "viceroy.workspaceSyncStrategy": "prompt",
+  "viceroy.config.notifyMarchAL2Incompatibility": false,
+  "viceroy.marketplace.extensionUpdateChannels": {
+    "kaze.vscode-plugin-contribution-model": "stable",
+    "amzn.controls-dsl": "stable",
+    "marklel.vscode-brazil": "stable",
+    "amzn.vscode-isengard-tooltip": "stable",
+    "amzn.AWSGuruQLinter": "stable",
+    "amzn.amzn-pippin": "stable"
+  },
+  "viceroy.config.setup.amazonQ": false,
+  "viceroy.doc.welcome.showAtStartup": false,
+  {{- end }}
   "workbench.colorTheme": "Catppuccin Macchiato",
   "git.confirmSync": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -17,7 +69,7 @@
   "editor.stickyScroll.enabled": false,
   "workbench.iconTheme": "material-icon-theme",
   "editor.wordWrap": "on",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "security.promptForLocalFileProtocolHandling": false,
   "debug.javascript.autoAttachFilter": "always",
   "vim.useSystemClipboard": true,
