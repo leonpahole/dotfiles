@@ -12,6 +12,11 @@
     "when": "vim.mode === 'Normal' || vim.mode === 'Visual'"
   },
   {
+    "key": "{{ .mKey }}+l",
+    "command": "workbench.action.navigateRight",
+    "when": "!editorFocus"
+  },
+  {
     "key": "{{ .mKey }}+k",
     "command": "workbench.action.navigateUp",
     "when": "vim.mode === 'Normal' || vim.mode === 'Visual'"
