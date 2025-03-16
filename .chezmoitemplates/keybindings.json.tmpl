@@ -41,12 +41,12 @@
   {
     "key": "shift+l",
     "command": "workbench.action.nextEditor",
-    "when": "vim.mode === 'Normal' && editorFocus"
+    "when": "!inputFocus || (editorFocus && vim.mode === 'Normal')"
   },
   {
     "key": "shift+h",
     "command": "workbench.action.previousEditor",
-    "when": "vim.mode === 'Normal' && editorFocus"
+    "when": "!inputFocus || (editorFocus && vim.mode === 'Normal')"
   },
   // scroll up and down quick results
   {
@@ -151,22 +151,43 @@
   },
   // scroll terminals
   {
-    "key": "alt+j",
+    "key": "{{ .mKey }}+b j",
     "when": "terminalFocus",
     "command": "workbench.action.terminal.focusNext"
   },
   {
-    "key": "alt+k",
+    "key": "{{ .mKey }}+b k",
     "when": "terminalFocus",
     "command": "workbench.action.terminal.focusPrevious"
+  },
+  // scroll terminal with alt+j and alt+k
+  {
+    "key": "alt+j",
+    "command": "workbench.action.terminal.scrollDown",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+k",
+    "command": "workbench.action.terminal.scrollUp",
+    "when": "terminalFocus"
   },
   // split editor
   {
     "key": "{{ .mKey }}+b i",
     "when": "editorFocus",
     "command": "workbench.action.splitEditorRight"
+  },  
+  {
+    "key": "alt+i",
+    "command": "search.action.focusFilesToInclude",
+    "when": "inSearchEditor"
   },
-  // search - focus result
+  {
+    "key": "alt+e",
+    "command": "search.action.focusFilesToExclude",
+    "when": "inSearchEditor"
+  },
+  // search - focus results
   {
     "key": "{{ .mKey }}+j",
     "command": "runCommands",
@@ -176,7 +197,7 @@
         "extension.vim_escape"
       ]
     },
-    "when": "inSearchEditor && searchInputBoxFocus"
+    "when": "inSearchEditor && inputBoxFocus"
   },
   // search - focus input box
   {
@@ -194,7 +215,7 @@
         "extension.vim_escape"
       ]
     },
-    "when": "inSearchEditor && !searchInputBoxFocus"
+    "when": "inSearchEditor && !inputBoxFocus"
   },
   // search - focus previous result after
   {
@@ -211,12 +232,12 @@
   },
   // search - widen the preview
   {
-    "key": "alt+[Minus]",
+    "key": "alt+j",
     "command": "decreaseSearchEditorContextLines",
     "when": "inSearchEditor"
   },
   {
-    "key": "alt+[Equal]",
+    "key": "alt+k",
     "command": "increaseSearchEditorContextLines",
     "when": "inSearchEditor"
   },
@@ -324,6 +345,14 @@
     "key": "{{ .mKey }}+p",
     "command": "-workbench.action.quickOpen"
   },
+  {
+    "key": "shift+alt+n",
+    "command": "workbench.action.newWindow"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "-workbench.action.newWindow"
+  }
   {{ if eq .os "mac" }}
   // mac cmd+d remap
   {
